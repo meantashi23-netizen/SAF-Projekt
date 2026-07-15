@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="refresh" content="1"></head>
+<body>
+    <h1>SAF Spektral-Alpha Fusion V29.3.2</h1>
+    <div id="data">
+        <p>Status: <span id="status">Warte...</span></p>
+        <p>BPM: <span id="bpm">Warte...</span></p>
+    </div>
+    <script>
+        // Einfacher Polling-Mechanismus, um Daten vom Server zu ziehen
+        fetch('/api/data').then(r => r.json()).then(d => {
+            document.getElementById('status').innerText = d.status;
+            document.getElementById('bpm').innerText = d.bpm;
+        });
+    </script>
+</body>
+</html>
