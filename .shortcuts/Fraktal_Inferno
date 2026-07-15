@@ -1,0 +1,4 @@
+cd ~
+python meine_berechnung.py inferno && termux-open fraktal_neu.png
+#!/data/data/com.termux/files/usr/bin/bash
+python ~/meine_berechnung.py inferno

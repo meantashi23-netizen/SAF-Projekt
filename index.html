@@ -1,0 +1,24 @@
+<html>
+<body>
+<canvas id="c" width="32" height="32" style="width:256px; image-rendering:pixelated;"></canvas>
+<script>
+async function draw() {
+    try {
+        const res = await fetch('/matrix');
+        if (!res.ok) throw new Error();
+        const buf = await res.arrayBuffer();
+        const ctx = document.getElementById('c').getContext('2d');
+        const img = ctx.createImageData(32, 32);
+        const data = new Uint8Array(buf);
+        for(let i=0; i<1024; i++) {
+            img.data[i*4] = data[i]; img.data[i*4+1] = data[i]; 
+            img.data[i*4+2] = data[i]; img.data[i*4+3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+    } catch(e) { console.log("Reconnecting..."); }
+    setTimeout(draw, 100);
+}
+draw();
+</script>
+</body>
+</html>

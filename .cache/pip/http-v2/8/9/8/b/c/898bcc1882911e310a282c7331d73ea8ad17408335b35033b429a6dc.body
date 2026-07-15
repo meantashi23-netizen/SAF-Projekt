@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: streamlit
+Version: 0.26.1
+Summary: Streaming Data Science
+Home-page: https://github.com/treuille/streamlet-cloud
+Author: Adrien Treuille
+Author-email: adrien.g.treuille@gmail.com
+License: MIT
+Platform: UNKNOWN
+Requires-Dist: entrypoints (==0.2.3)
+Requires-Dist: psutil
+Requires-Dist: tornado (<6.0)
+Requires-Dist: pillow (!=5.1.0)
+Requires-Dist: enum-compat
+Requires-Dist: base58
+Requires-Dist: pandas
+Requires-Dist: boto3
+Requires-Dist: docutils
+Requires-Dist: future
+Requires-Dist: toml
+Requires-Dist: protobuf
+Requires-Dist: watchdog
+Requires-Dist: tzlocal
+Requires-Dist: botocore
+Requires-Dist: numpy
+Requires-Dist: click
+Requires-Dist: future-fstrings
+Requires-Dist: backports-abc ; python_version < "3.0"
+Requires-Dist: futures ; python_version < "3.0"
+
+# Streamlit
+
+This is the Python library for Streamlit. It includes the `streamlit`
+package which the user installs and loads as well as the "proxy" which
+communicates with the browser.
+
+
