@@ -1,13 +1,15 @@
 #!/bin/bash
-# SAF Realtime Audio-Visual Coupling Engine
+# SAF Hybrid Visualizer: J(o)=1.39 Image + Waveform Overlay
 
 AUDIO_INPUT="SAF_V29.3.5_Forward_Path_Master.wav"
+BACKGROUND_IMG="saf_v29_visual.jpg"
 OUTPUT_STREAM="saf_realtime_matrix.mp4"
 
-echo "=== Starte SAF Realtime Audio-Visual Pipeline ==="
+echo "=== Starte SAF Hybrid Audio-Visual Pipeline ==="
 
-ffmpeg -y -i "$AUDIO_INPUT" \
-  -filter_complex "[0:a]avectorscope=s=1920x1080:m=lissajous:rc=0:gc=255:bc=200:zoom=1.5[out]" \
+# Generiert die Waveform mit transparentem Hintergrund und blendet sie über das Visual
+ffmpeg -y -i "$AUDIO_INPUT" -loop 1 -i "$BACKGROUND_IMG" \
+  -filter_complex "[0:a]showwaves=s=1920x1080:mode=line:colors=0x00ffff@0.85[wave];[1:v][wave]overlay=0:0:shortest=1[out]" \
   -map "[out]" -map 0:a -c:v libx264 -preset fast -crf 18 -c:a copy "$OUTPUT_STREAM"
 
-echo "Realtime Coupling Video abgeschlossen: $OUTPUT_STREAM"
+echo "Hybrid Render abgeschlossen: $OUTPUT_STREAM"
