@@ -23,7 +23,7 @@ ax = fig.add_subplot(111, projection="3d")
 
 writer = FFMpegWriter(fps=30, metadata=dict(artist='SAF Engine'), bitrate=1800)
 
-with writer.saving(fig, "saf_v41_hyper_mesh.mp4", 100):
+with writer.saving(fig, "saf_v41_render.mp4", 100):
     for i in range(150):
         ax.clear()
         t = i * 0.04
