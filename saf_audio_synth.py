@@ -54,3 +54,4 @@ if __name__ == "__main__":
     synth.save_wav("saf_stem3_high_87.273bpm.wav", high)
     master = (sub * 0.5) + (mid * 0.3) + (high * 0.2)
     synth.save_wav("saf_master_mix_87.273bpm.wav", master)
+    print("Audio Stems erfolgreich generiert.")
